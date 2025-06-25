@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Action Completed</title>
-  <meta http-equiv="refresh" content="5;url=https://yourdomain.com/login">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -26,5 +25,14 @@
     <p>You are being redirected...</p>
     <p>If you are not redirected in a few seconds, <a href="https://yourdomain.com/login">click here</a>.</p>
   </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('redirect') === 'app') {
+      window.location.href = 'com.example.split_smart_app://login';
+      setTimeout(() => {
+        window.location.href = 'https://yourdomain.com/login';
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
